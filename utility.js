@@ -1,4 +1,5 @@
-const User = require("./models/userModel");
+const db = require("./models");
+const User = require("./models/userModel")(db.sequelize, db.Sequelize);
 
 class CustomError extends Error {
   // generate customized error messages and codes
@@ -12,7 +13,7 @@ class CustomError extends Error {
 const getUserByEmail = async (email) => {
   // check across the three account collections to find user with given email
   const handleError = (err) => (err ? err : null);
-  return await User.findOne({ email })
+  return await User.findOne({ where: { email } })
     .then((user) => {
       if (user && email !== undefined) {
         return user;
@@ -24,7 +25,7 @@ const getUserByEmail = async (email) => {
 const getUserByDBId = async (id) => {
   // check across the three account collections to find user with given id
   const handleError = (err) => (err ? err : null);
-  return await User.findOne({ id })
+  return await User.findOne({ where: { id } })
     .then((user) => {
       if (user && id !== undefined) {
         return user;
@@ -41,7 +42,8 @@ const handleServerErrors = (res, _err) => {
 
 const updateProfileResponse = (_user) => {
   //   if (process.env.NODE_ENV === "development") {
-  let _new = _user.toJSON();
+  console.log(_user);
+  let _new = _user;
   // _new.avatar = _host + _new.avatar;
 
   delete _new.password;
