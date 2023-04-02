@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "Filtered",
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["./scripts/js/main.js"] }
+  ],
+  "icons": {
+    "48": "./assets/icon.png",
+    "96": "./assets/icon.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "./assets/icon.png",
+      "38": "./assets/icon.png"
+    }
+  },
+  "background": {
+    "scripts": ["./scripts/js/background.js"]
+  },
+  "permissions": ["tabs", "storage"]
+}

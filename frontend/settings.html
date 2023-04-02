@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Website Form</title>
+    <link rel="stylesheet" type="text/css" href="./scripts/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"
+          ><i class="fa-regular fa-user-shield"></i>FILTERED</a
+        >
+        <div class="navbar__toogle" id="menu">
+          <span class="bar"></span><span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/" class="navbar__links">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/settings" class="navbar__links">settings</a>
+          </li>
+          <li class="navbar__btn" id="sign-in-btn">
+            <a href="/login" class="button">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <h1>Website List</h1>
+    <div class="wrapper">
+      <div id="websites">
+        <div class="form-group">
+          <label for="name"> Site Name: </label>
+          <input
+            type="text"
+            name="website[]"
+            class="website form-control"
+            size="50"
+            id="name"
+            placeholder="Website Name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="url">Website Url:</label>
+          <input
+            type="url"
+            name="website[]"
+            class="website form-control"
+            size="50"
+            id="url"
+            placeholder="Add Website"
+          />
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn bg-green" id="add_website">
+          <i class="fa fa-plus"></i>Add Website
+        </button>
+        <button class="btn btn-outline" id="remove_website">
+          <i class="fa fa-minus"></i>Remove Website
+        </button>
+      </div>
+    </div>
+    <div class="wrapper" id="blocked-list"></div>
+    <script src="./scripts/js/appfunctions.js"></script>
+    <script src="./scripts/js/apiCalls.js"></script>
+  </body>
+  <script>
+    fetchCurrentUser()
+      .then((_res) => {
+        document.getElementById(
+          "blocked-list"
+        ).innerHTML = `<p>${_res.restricted.reduce((_init, _current) => {
+          return (
+            _init + `<span><b>${_current.name}:</b> ${_current.url}</span>`
+          );
+        }, "<span style='padding-bottom:1rem ;'>Blocked Websites: </span>")}</p>`;
+      })
+      .catch((_err) => {
+        console.log("err: ", _err);
+      });
+  </script>
+</html>

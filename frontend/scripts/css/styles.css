@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Relway", sans-serif;
+}
+.navbar {
+  background: white;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.navbar__container {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  margin: 0 auto;
+  padding: 0 50px;
+  width: 100%;
+  max-width: 1300px;
+}
+#navbar__logo {
+  background-color: green;
+  background-image: linear-gradient(to top, green, rgb(8, 138, 8));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+}
+.fa-user-shield {
+  margin-right: 0.5rem;
+}
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+}
+.navbar__item {
+  height: 80px;
+}
+.navbar__links {
+  color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+}
+.navbar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  width: 100%;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 18px 28px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: green;
+  color: black;
+}
+.button:hover {
+  background: blue;
+  transition: all 0.3s ease;
+}
+.navbar__links:hover {
+  color: black;
+  transition: all 0.3s ease;
+}
+.wrapper {
+  width: 400px;
+  margin: 40px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0px 10px 40px 0px rgba(31, 30, 30, 0.1);
+}
+input[type=" text"] {
+  margin: 10px auto;
+  padding: 10px;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid lightgreen;
+  background: none;
+  width: 300px;
+  color: black;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+.controls {
+  width: 294px;
+  margin: 15px auto;
+}
+#remove_website {
+  float: right;
+}
+.controls a i.fa-minus {
+  margin-right: 5px;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+h1 {
+  text-align: center;
+  font-size: 50px;
+  color: black;
+}
+
+/* form styles */
+label {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+.form-group {
+  margin-top: 1rem;
+}
+
+.form-row > [class*="col-"] {
+  padding: 0 5px;
+}
+
+.form-control {
+  display: block;
+  width: 90%;
+  /* width: 100%; */
+  /* height: calc(1.5em + .75rem + 2px); */
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  margin: 0 5px;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  -webkit-transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.bg-green {
+  background: green;
+  color: black;
+}
+
+.btn-outline {
+  border: solid 1px green;
+  color: black;
+}
+
+#blocked-list p {
+  display: grid;
+}

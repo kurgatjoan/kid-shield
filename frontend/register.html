@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index</title>
+    <link rel="stylesheet" type="text/css" href="./scripts/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="path/to/font-awesome/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="/" id="navbar__logo"
+          ><i class="fa-regular fa-user-shield"></i>KID SHIELD</a
+        >
+        <div class="navbar__toogle" id="menu">
+          <span class="bar"></span><span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a href="/" class="navbar__links">Home</a>
+          </li>
+          <li class="navbar__item">
+            <a href="/settings" class="navbar__links">settings</a>
+          </li>
+          <li class="navbar__btn" id="sign-in-btn">
+            <a href="/login" class="button">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--About the extension-->
+    <div class="About-container">
+      <div class="Information">
+        <h1>About Us</h1>
+        <p>
+          We are here to make browsing experience safe and secure for your kids.
+          Just register and you will be good to go!
+        </p>
+      </div>
+    </div>
+    <!--register-->
+    <div class="form-container">
+      <div class="form-btn">
+        <span onclick="signup()">SignUp</span>
+        <hr id="Indicator" />
+      </div>
+      <form id="SignUpform">
+        <div class="form-group">
+          <label for="email">Email: </label>
+          <input
+            type="email"
+            placeholder="Email"
+            class="form-control"
+            id="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password: </label>
+          <input
+            type="password"
+            placeholder="Password"
+            class="form-control"
+            id="password"
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-outline" id="registerBtn">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+    <!--footer-->
+  </body>
+  <script src="./scripts/js/apiCalls.js"></script>
+  <script src="./scripts/js/appfunctions.js"></script>
+</html>
