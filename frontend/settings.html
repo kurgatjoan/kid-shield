@@ -77,7 +77,7 @@
           "blocked-list"
         ).innerHTML = `<p>${_res.restricted.reduce((_init, _current) => {
           return (
-            _init + `<span><b>${_current.name}:</b> ${_current.url}</span>`
+            _init + `<span><b>${JSON.parse(_current).name}:</b> ${JSON.parse(_current).url}</span>`
           );
         }, "<span style='padding-bottom:1rem ;'>Blocked Websites: </span>")}</p>`;
       })

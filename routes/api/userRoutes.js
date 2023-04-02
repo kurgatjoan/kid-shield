@@ -30,6 +30,7 @@ const userRoutes = (User) => {
       console.log("user: ", req.user);
     })
     .patch(passport.authenticate("jwt", { session: false }), (req, res) => {
+      console.log("William: ", req)
       if (
         req.body &&
         req.user.restricted.includes((_val) => _val.url === req.body.url)

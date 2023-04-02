@@ -40,7 +40,7 @@ const authRoutes = (User) => {
     try {
       if (await bcrypt.compare(req.body.password, user.password)) {
         // issue jwt return user with jwt header
-        const jwtToken = issueJwt(user._id);
+        const jwtToken = issueJwt(user.id);
         const returnUser = user.toJSON();
         delete returnUser.password;
         delete returnUser.__v;

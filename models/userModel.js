@@ -18,7 +18,7 @@ const userSchema = (sequelize, Sequelize) => {
         allowNull: true,
       },
       details: { type: Sequelize.JSON },
-      restricted: { type: Sequelize.ARRAY(Sequelize.STRING) },
+      restricted: { type: Sequelize.ARRAY(Sequelize.STRING), defaultValue: [] },
     },
 
     { timestamps: true }
