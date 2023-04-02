@@ -10,6 +10,7 @@ require("dotenv");
 
 const initializePassport = require("./passport-config");
 const appRouting = require("./routes/index");
+const db = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 3200;
@@ -18,43 +19,43 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/kid-shield";
 const pathToKey = path.join(__dirname, "./cryptography/id_rsa_pub.pem");
 const PUB_KEY = fs.readFileSync(pathToKey, "utf-8");
 
-
-mongoose.connect(
-  MONGODB_URI,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-    (err) => {
-      err
-        ? console.log(`There was an error: ${err.message}`)
-        : console.log("Connected successfully to database!!");
-    }
-  );
-
-// initialize DB
 // mongoose.connect(
 //   MONGODB_URI,
-//   {
-//     // useFindAndModify: false,
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     // useCreateIndex: true,
-//   }).then(() => console.log("Mongo DB Connected")).catch((err) => console.log(err));
+//     {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     },
+//     (err) => {
+//       err
+//         ? console.log(`There was an error: ${err.message}`)
+//         : console.log("Connected successfully to database!!");
+//     }
+//   );
 
-const db = mongoose.connection;
+// initialize DB
+//connect to database and create tables if they don't exist
+db.sequelize
+  .sync()
+  .then(() => {
+    console.log("Synced db.");
+  })
+  .catch((err) => {
+    console.log("Failed to sync db: " + err.message);
+  });
 
-db.on('connected', () => {
-  console.log("MongoDb Connected");
-});
+// const db = mongoose.connection;
 
-db.on('error', (error) => {
-  console.log(error);
-});
+// db.on("connected", () => {
+//   console.log("MongoDb Connected");
+// });
 
-db.on('disconnected', () => {
-  console.log("Mongoose disconnected")
-});
+// db.on("error", (error) => {
+//   console.log(error);
+// });
+
+// db.on("disconnected", () => {
+//   console.log("Mongoose disconnected");
+// });
 
 // app config
 app.use(

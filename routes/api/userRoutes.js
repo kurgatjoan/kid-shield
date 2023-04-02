@@ -38,23 +38,22 @@ const userRoutes = (User) => {
       }
 
       // console.log(uniqueSet([[...req.user.restricted, req.body]]));
-      User.findByIdAndUpdate(
-        req.user._id,
-        {
-          $set: {
-            restricted: [...req.user.restricted, req.body],
-          },
-        },
-        { new: true, runValidators: true }
-      )
-        .then((_res) => {
-          console.log("updated: ", _res);
-          res.status(201).json({
-            message: "Blocked sites successfully updated.",
-            new: _res.restricted,
-          });
-        })
-        .catch((_err) => handleServerErrors(res, _err));
+      User.findOne({ where: { id: req.user.id } }).then((_user) => {
+        if (_user) {
+          _user
+            .update({
+              restricted: [...req.user.restricted, req.body],
+            })
+            .then((_res) => {
+              console.log("updated: ", _res);
+              res.status(201).json({
+                message: "Blocked sites successfully updated.",
+                new: _res.restricted,
+              });
+            })
+            .catch((_err) => handleServerErrors(res, _err));
+        }
+      });
     })
     .delete(passport.authenticate("jwt", { session: false }), (req, res) => {
       if (!req.body) {
@@ -66,25 +65,24 @@ const userRoutes = (User) => {
       );
 
       console.log(_newList);
-      User.findByIdAndUpdate(
-        req.user._id,
-        {
-          $set: {
-            restricted: _newList,
-          },
-        },
-        { new: true, runValidators: true }
-      )
-        .then((_res) => {
-          console.log("updated: ", _res);
-          res.status(201).json({
-            message:
-              req.body.remove +
-              " removed from blocked sites successfully updated.",
-            new: _res.restricted,
-          });
-        })
-        .catch((_err) => handleServerErrors(res, _err));
+      User.findOne({ where: { id: req.user.id } }).then((_user) => {
+        if (_user) {
+          _user
+            .update({
+              restricted: _newList,
+            })
+            .then((_res) => {
+              console.log("updated: ", _res);
+              res.status(201).json({
+                message:
+                  req.body.remove +
+                  " removed from blocked sites successfully updated.",
+                new: _res.restricted,
+              });
+            })
+            .catch((_err) => handleServerErrors(res, _err));
+        }
+      });
     });
   return userRouter;
 };
