@@ -52,7 +52,10 @@ const authRoutes = (User) => {
     } catch (error) {
       console.log(error);
       // const returning = handleResponseErrors("authError");
-      return res.status(500).json({errorMessage: "Sorry Authentication failed"})    }
+      return res
+        .status(500)
+        .json({ errorMessage: "Sorry Authentication failed" });
+    }
   });
 
   authRouter.route("/register").post(async (req, res) => {
@@ -64,17 +67,20 @@ const authRoutes = (User) => {
       }
       const salt = await bcrypt.genSalt();
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
-      const user = new User({
+      User.create({
         ...req.body,
         password: hashedPassword,
-      });
+      })
+        .then((user) => {
+          const jwtToken = issueJwt(user.id);
+          const returnUser = user.toJSON();
+          delete returnUser.password;
+          // delete returnUser._id;
+          res.header("Authorization", jwtToken.token).json(returnUser);
+        })
+        .catch((err) => console.log("error", err));
+
       // TODO: add instance method to generate a new  id
-      user.save((err) => console.log("error", err));
-      const jwtToken = issueJwt(user._id);
-      const returnUser = user.toJSON();
-      delete returnUser.password;
-      // delete returnUser._id;
-      res.header("Authorization", jwtToken.token).json(returnUser);
     } catch (error) {
       res.json({ error: error.message, code: error.name });
     }
