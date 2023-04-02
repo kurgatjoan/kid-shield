@@ -25,8 +25,9 @@
   max-width: 1300px;
 }
 #navbar__logo {
-  background-color: green;
-  background-image: linear-gradient(to top, green, rgb(8, 138, 8));
+  background-color: #191765;
+  font-weight: 700;
+  /* background-image: linear-gradient(to top, green, rgb(8, 138, 8)); */
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -51,7 +52,7 @@
   height: 80px;
 }
 .navbar__links {
-  color: green;
+  color: #02aab0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,11 +78,11 @@
   border: none;
   outline: none;
   border-radius: 4px;
-  background: green;
-  color: black;
+  background: #02aab0;
+  color: #fff;
 }
 .button:hover {
-  background: blue;
+  background: #24989c81;
   transition: all 0.3s ease;
 }
 .navbar__links:hover {
@@ -135,6 +136,20 @@ label {
   margin-bottom: 0.3rem;
 }
 
+.form-container {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.form-container span {
+  font-size: 24px;
+}
+
+.form-container form {
+  width: 50%;
+}
+
 .form-group {
   margin-top: 1rem;
 }
@@ -180,6 +195,14 @@ label {
   box-sizing: border-box;
 }
 
+/* Websites container */
+
+.container-websites {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
 /* Button styles */
 .btn {
   display: inline-block;
@@ -217,4 +240,52 @@ label {
 
 #blocked-list p {
   display: grid;
+}
+
+
+/* Home page styles */
+.homepage-container {
+  /* text-align: left; */
+  background-image: url("../../assets/magnet-me-LDcC7aCWVlo-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 400px;
+  background-position: right;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 2em 0;
+}
+
+.About-container {
+  width: 50%;
+}
+
+.Information {
+  display: flex;
+  flex-direction: column;
+}
+
+.Information h1 {
+  text-align: left;
+  margin: 1em 0;
+  font-size: 32px;
+}
+
+.homepage-container ul {
+  text-align: left;
+  padding-left: 1em;
+}
+
+.homepage-container ul li {
+  letter-spacing: 1px;
+  font-size: 16px;
+  list-style-type: square;
+}
+
+.homepage-container p {
+  margin: 2em 0;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
 }

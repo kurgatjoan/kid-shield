@@ -22,9 +22,9 @@
           <li class="navbar__item">
             <a href="/" class="navbar__links">Home</a>
           </li>
-          <li class="navbar__item">
+          <!-- <li class="navbar__item">
             <a href="/settings" class="navbar__links">settings</a>
-          </li>
+          </li> -->
           <li class="navbar__btn" id="sign-in-btn">
             <a href="/login" class="button">Sign In</a>
           </li>
@@ -32,41 +32,43 @@
       </div>
     </nav>
     <h1>Website List</h1>
-    <div class="wrapper">
-      <div id="websites">
-        <div class="form-group">
-          <label for="name"> Site Name: </label>
-          <input
-            type="text"
-            name="website[]"
-            class="website form-control"
-            size="50"
-            id="name"
-            placeholder="Website Name"
-          />
+    <section class="container-websites">
+      <div class="wrapper">
+        <div id="websites">
+          <div class="form-group">
+            <label for="name"> Site Name: </label>
+            <input
+              type="text"
+              name="website[]"
+              class="website form-control"
+              size="50"
+              id="name"
+              placeholder="example"
+            />
+          </div>
+          <div class="form-group">
+            <label for="url">Website Url:</label>
+            <input
+              type="url"
+              name="website[]"
+              class="website form-control"
+              size="50"
+              id="url"
+              placeholder="https:://www.example.com"
+            />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="url">Website Url:</label>
-          <input
-            type="url"
-            name="website[]"
-            class="website form-control"
-            size="50"
-            id="url"
-            placeholder="Add Website"
-          />
+        <div class="controls">
+          <button class="btn bg-green" id="add_website">
+            <i class="fa fa-plus"></i>Add Website
+          </button>
+          <button class="btn btn-outline" id="remove_website">
+            <i class="fa fa-minus"></i>Remove Website
+          </button>
         </div>
       </div>
-      <div class="controls">
-        <button class="btn bg-green" id="add_website">
-          <i class="fa fa-plus"></i>Add Website
-        </button>
-        <button class="btn btn-outline" id="remove_website">
-          <i class="fa fa-minus"></i>Remove Website
-        </button>
-      </div>
-    </div>
-    <div class="wrapper" id="blocked-list"></div>
+      <div class="wrapper" id="blocked-list"></div>
+    </section>
     <script src="./scripts/js/appfunctions.js"></script>
     <script src="./scripts/js/apiCalls.js"></script>
   </body>
