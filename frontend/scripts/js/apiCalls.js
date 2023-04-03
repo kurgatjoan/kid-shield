@@ -88,7 +88,6 @@ const checkAuth = () => {
 
   return fetchCurrentUser()
     .then((_res) => {
-      console.log("ss: ", _res);
       if (_signInBtn && _res) {
         _signInBtn.innerHTML = `<a href="/login" onclick="logout(event)" class="button">Log Out</a>`;
       }
