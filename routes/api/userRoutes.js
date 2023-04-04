@@ -27,10 +27,10 @@ const userRoutes = (User) => {
     .get(passport.authenticate("jwt", { session: false }), (req, res) => {
       res.status(201).json({ restricted: req.user.restricted });
 
-      console.log("user: ", req.user);
+      // console.log("user: ", req.user);
     })
     .patch(passport.authenticate("jwt", { session: false }), (req, res) => {
-      console.log("William: ", req)
+      // console.log("William: ", req)
       if (
         req.body &&
         req.user.restricted.includes((_val) => _val.url === req.body.url)
@@ -46,7 +46,7 @@ const userRoutes = (User) => {
               restricted: [...req.user.restricted, req.body],
             })
             .then((_res) => {
-              console.log("updated: ", _res);
+              // console.log("updated: ", _res);
               res.status(201).json({
                 message: "Blocked sites successfully updated.",
                 new: _res.restricted,
@@ -61,10 +61,8 @@ const userRoutes = (User) => {
         return res.status(400).json({ errorMessage: "Payload is incorect." });
       }
       console.log(req.body);
-      const _newList = req.user.restricted.filter(
-        (_val) => _val.url !== req.body.url
-      );
-
+      const _newList = req.user.restricted.filter(_val=>{ let _obj = JSON.parse(_val); return _obj.url !== req.body.url;})
+      
       console.log(_newList);
       User.findOne({ where: { id: req.user.id } }).then((_user) => {
         if (_user) {
@@ -73,7 +71,7 @@ const userRoutes = (User) => {
               restricted: _newList,
             })
             .then((_res) => {
-              console.log("updated: ", _res);
+              // console.log("updated: ", _res);
               res.status(201).json({
                 message:
                   req.body.remove +

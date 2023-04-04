@@ -42,7 +42,7 @@ const handleServerErrors = (res, _err) => {
 
 const updateProfileResponse = (_user) => {
   //   if (process.env.NODE_ENV === "development") {
-  console.log(_user);
+  
   let _new = _user;
   // _new.avatar = _host + _new.avatar;
 
